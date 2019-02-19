@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/colorAccent"
+              android:layout_height="match_parent">
+
+    <cn.wgc.customkeyboard.view.KeyboardEditText
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="请输入身份号码"
+            android:padding="5dp"
+            app:keyboardType="idCard"
+            android:gravity="center_vertical"
+            android:maxLength="18"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"/>
+
+</LinearLayout>

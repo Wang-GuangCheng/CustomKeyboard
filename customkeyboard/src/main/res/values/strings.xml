@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">customKeyboard</string>
+    <string name="text_complete">完成</string>
+    <string name="text_long_time">长期</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="KeyboardEditText">
+        <attr name="keyboardType" format="enum">
+            <enum name="number" value="0"/>
+            <enum name="pwd" value="1"/>
+            <enum name="idCard" value="2"/>
+            <enum name="numberText" value="3"/>
+        </attr>
+        <attr name="textEnable" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="PwdEditText">
+        <attr name="roundRadius" format="dimension"/>
+        <attr name="pwdSize" format="dimension"/>
+        <attr name="rectRadius" format="dimension"/>
+        <attr name="cursorHeight" format="dimension"/>
+        <attr name="cursorFlashTime" format="integer"/>
+        <attr name="isCursorEnable" format="boolean"/>
+        <attr name="cipherEnable" format="boolean"/>
+        <attr name="cursorColor" format="color"/>
+        <attr name="pwdColor" format="color"/>
+        <attr name="backColor" format="color"/>
+    </declare-styleable>
+
+</resources>
