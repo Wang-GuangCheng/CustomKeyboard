@@ -11,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -28,7 +27,7 @@ import cn.wgc.customkeyboard.view.KeyboardEditText;
  *     version: 1.0
  * </pre>
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseKeyboardActivity extends AppCompatActivity {
 
     private int start;
     private FrameLayout contentParent;
@@ -65,7 +64,6 @@ public class BaseActivity extends AppCompatActivity {
                     int[] position = new int[2];
                     keyboardView.getLocationInWindow(position);
                     start = position[1];
-                    Log.d("wgc", "  start  " + start);
                     //此处用addOnGlobalLayoutListener在MTK，高通较低端的处理器6.0+的版本上会有问题，拿到的高度是屏幕的
                     // 最大高度，所以判断布局后值小于屏幕的最大高度才移除监听
                     if (start < getScreenHeight()) {

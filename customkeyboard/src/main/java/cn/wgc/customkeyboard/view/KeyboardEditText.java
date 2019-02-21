@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.*;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
@@ -284,7 +283,6 @@ public class KeyboardEditText extends AppCompatEditText implements View.OnTouchL
             setKeyType(type);
             showKeyboard();
         } else {
-            Log.d("wgc", "失去焦点");
             if (keyboardView.getVisibility() == View.VISIBLE && !keyboardView.hasWindowFocus())
                 hideKeyboard();
         }

@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import cn.keyboard.demo.util.FragmentHelper;
-import cn.wgc.customkeyboard.BaseActivity;
+import cn.wgc.customkeyboard.BaseKeyboardActivity;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *     version: 1.0
  * </pre>
  */
-public class KeyboardActivity extends BaseActivity implements View.OnClickListener {
+public class KeyboardActivity extends BaseKeyboardActivity implements View.OnClickListener {
 
     private TabLayout mTabKeyType;
     private ViewPager mViewPager;

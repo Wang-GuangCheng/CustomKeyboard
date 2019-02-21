@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import cn.wgc.customkeyboard.BaseActivity;
+import cn.wgc.customkeyboard.BaseKeyboardActivity;
 
 /**
  * <pre>
@@ -14,7 +14,7 @@ import cn.wgc.customkeyboard.BaseActivity;
  *     version: 1.0
  * </pre>
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseKeyboardActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.btn_step).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,KeyboardActivity.class));
+                startActivity(new Intent(MainActivity.this, KeyboardActivity.class));
             }
         });
     }

@@ -45,9 +45,9 @@ public class  PwdEditText extends KeyboardEditText {
     private boolean isInputComplete;//是否输入完毕
     private long cursorFlashTime;//光标闪动间隔时间
     private boolean cipherEnable;//是否开启密文
-    private float radius;
-    private float rectRadius;
-    private int pwdSize;
+    private float radius; //圆形密码的大小
+    private float rectRadius; //密码框的圆角大小
+    private int pwdSize; //密码字体大小
     private int mRectWidth;
 
     private Timer timer;
