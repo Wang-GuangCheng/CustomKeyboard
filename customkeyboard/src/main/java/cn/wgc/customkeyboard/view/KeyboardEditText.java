@@ -83,7 +83,7 @@ public class KeyboardEditText extends AppCompatEditText implements View.OnTouchL
 
         setOnTouchListener(this);
         setOnFocusChangeListener(this);
-        setFocusableInTouchMode(true);
+        setFocusableInTouchMode(true); //初始化设置触摸事件可获取焦点,在每次触摸时就可避免每次去requestFocusFromTouch()
         setKeyType(type);
         setLongClickable(false);
     }
@@ -215,7 +215,7 @@ public class KeyboardEditText extends AppCompatEditText implements View.OnTouchL
         if (isAnim)
             return;
         isAnim = true;
-        //android 9 的华为 荣耀手机 这里需要重置，不然动画出现重影
+        //android 9.0 的华为 荣耀手机 这里需要重置，不然输入到一半后隐藏动画出现重影 ,考效果的可以注释看下
         keyboardView.setKeyboard(defaultKeyboard);
         startHideAnimator(keyboardView);
     }

@@ -48,7 +48,6 @@
             android:background="@null"
             android:cursorVisible="false"
             app:keyboardType="pwd"
-            android:maxLength="8"
             app:isCursorEnable="true"
             app:pwdColor="@color/colorAccent"/>
 
@@ -57,6 +56,7 @@
 |keyboardType|控制键盘类型默认数字键盘 | pwd |
 |roundRadius|  密码的大小  | dimension|
 |pwdSize|  密码字体大小  | dimension|
+|pwdLength|  密码长度  | integer|
 |rectRadius|  密码框圆角的大小  | dimension|
 |cursorHeight|  光标大小  | dimension|
 |cursorFlashTime|  光标刷新时间  | integer|

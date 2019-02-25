@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
+import android.text.InputFilter;
 import android.util.AttributeSet;
 import cn.wgc.customkeyboard.R;
 
@@ -22,9 +23,9 @@ import java.util.TimerTask;
  * </pre>
  */
 
-public class  PwdEditText extends KeyboardEditText {
+public class PwdEditText extends KeyboardEditText {
 
-    private final int PWD_LENGTH = 8;//密码长度
+    private int pwdLength = 8;//密码长度
     private int mWidth; //宽度
     private int mHeight;//高度
     private Paint mPwdPaint; //密码画笔
@@ -77,6 +78,7 @@ public class  PwdEditText extends KeyboardEditText {
         cursorHeight = typedArray.getDimensionPixelSize(R.styleable.PwdEditText_cursorHeight, dp2px(15));
         cipherEnable = typedArray.getBoolean(R.styleable.PwdEditText_cipherEnable, true);
         cursorFlashTime = typedArray.getInteger(R.styleable.PwdEditText_cursorFlashTime, 500);
+        pwdLength = typedArray.getInteger(R.styleable.PwdEditText_pwdLength, 8);
         typedArray.recycle();
         setLongClickable(false);
     }
@@ -110,6 +112,7 @@ public class  PwdEditText extends KeyboardEditText {
             }
         };
         timer = new Timer();
+        setFilters(new InputFilter[]{new InputFilter.LengthFilter(pwdLength)}); //最大输入长度
     }
 
     @Override
@@ -126,7 +129,7 @@ public class  PwdEditText extends KeyboardEditText {
                 //指定大小，宽度 = 指定的大小
                 width = MeasureSpec.getSize(widthMeasureSpec);
                 //密码框大小等于 (宽度 - 密码框间距 *(密码位数 - 1)) / 密码位数
-                height = (width) / PWD_LENGTH;
+                height = (width) / pwdLength;
                 break;
         }
         setMeasuredDimension(width, height);
@@ -139,7 +142,7 @@ public class  PwdEditText extends KeyboardEditText {
         mHeight = getHeight();
 
         // 计算每个密码框宽度
-        mRectWidth = mWidth / PWD_LENGTH;
+        mRectWidth = mWidth / pwdLength;
 
         drawPwdRect(canvas);
         drawPwd(canvas);
@@ -165,14 +168,14 @@ public class  PwdEditText extends KeyboardEditText {
         Paint paint = new Paint();
         paint.setColor(backColor);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            canvas.drawRoundRect(0, 0, mWidth, mHeight,rectRadius, rectRadius, paint);
+            canvas.drawRoundRect(0, 0, mWidth, mHeight, rectRadius, rectRadius, paint);
             canvas.drawRoundRect(0, 0, mWidth, mHeight, rectRadius, rectRadius, mRectPaint);
         } else {
             canvas.drawRect(0, 0, mWidth, mHeight, paint);
             canvas.drawRect(0, 0, mWidth, mHeight, mRectPaint);
         }
 
-        for (int i = 0; i < PWD_LENGTH; i++) {
+        for (int i = 0; i < pwdLength; i++) {
             int startX = mRectWidth * i;
             if (i == 0) continue;
             canvas.drawLine(startX, 0, startX, mHeight, mRectPaint);
@@ -208,8 +211,8 @@ public class  PwdEditText extends KeyboardEditText {
             this.text = text.toString();
         }
         if (lengthBefore < lengthAfter) {
-            if (cursorPosition >= 8) {
-                cursorPosition = 8;
+            if (cursorPosition >= pwdLength) {
+                cursorPosition = pwdLength;
             } else {
                 cursorPosition++;
             }
@@ -220,14 +223,14 @@ public class  PwdEditText extends KeyboardEditText {
                 cursorPosition--;
             }
         }
-        if(text.toString().isEmpty()){
+        if (text.toString().isEmpty()) {
             cursorPosition = 0;
         }
-        isInputComplete = (mInputLength == PWD_LENGTH ? true : false);
+        isInputComplete = (mInputLength == pwdLength ? true : false);
         invalidate();
-        if (mInputLength == PWD_LENGTH && mOnInputFinishListener != null) {
+        if (mInputLength == pwdLength && mOnInputFinishListener != null) {
             mOnInputFinishListener.onInputFinish(text.toString(), mInputLength);
-        } else if (mInputLength < PWD_LENGTH && mOnInputFinishListener != null) {
+        } else if (mInputLength < pwdLength && mOnInputFinishListener != null) {
             mOnInputFinishListener.onInputUnfinished(mInputLength);
         }
     }

@@ -19,7 +19,7 @@
             android:background="@null"
             android:cursorVisible="false"
             app:keyboardType="pwd"
-            android:maxLength="8"
+            app:pwdLength="8"
             app:isCursorEnable="true"
             app:pwdColor="@color/colorAccent"/>
 
